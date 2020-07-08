@@ -1,0 +1,11 @@
+{
+    "eslint.options": {
+        "configFile": "./.eslintrc.js"
+    },
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.codeActionsOnSaveTimeout": 1500,
+    "eslint.nodePath": "./node_modules"
+}

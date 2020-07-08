@@ -1,0 +1,34 @@
+# docker-compose記法のバージョン
+version: "3.3"
+
+# 起動するコンテナの種類を定義
+services:
+  #以下node.jsのアプリケーションレイヤーの設定。このコンテナには「node-web」と名前がつく
+  node-web:
+    # build時にカレントディレクトリにあるDockerfileのイメージを使用する
+    build: .
+    ports:
+      # localの8888番ポートと、コンテナの3000番ポートをつなげる
+      - "8888:3000"
+    # コンテナ内でのホスト名
+    hostname: web-server
+    # このコンテナは、以下記述する「mongo-db」コンテナが立ち上がってから作成される。
+    depends_on:
+      - mongo-db
+
+  # 以下mongoDBのコンテナ設定。コンテナ名は「mongo-db」とつく。
+  mongo-db:
+    # mongo:3.6の公式コンテナイメージを元にして作成する。
+    image: "mongo:3.6"
+    ports:
+      - "27017:27017"
+    hostname: db-server
+    volumes:
+      #コンテナ内の/data/dbの中身を、「db-volume」という名前のvolumeにマウント
+      - db-volume:/data/db
+      - db-config-volume:/data/configdb
+
+# 作成するvolumeの名前を列挙
+volumes:
+  db-volume:
+  db-config-volume:

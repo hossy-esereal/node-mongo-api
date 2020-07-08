@@ -1,0 +1,17 @@
+{
+  "name": "docker_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "hossy",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "prettier": "^2.0.5"
+  }
+}
