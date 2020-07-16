@@ -5,6 +5,7 @@ WORKDIR /app
 # ワイルドカードを使用して、package.json と package-lock.json の両方が確実にコピーされるようにします。
 # 可能であれば (npm@5+)
 COPY package*.json ./
+COPY src ./src
 
 RUN npm install
 # 本番用
