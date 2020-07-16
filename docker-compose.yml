@@ -8,7 +8,7 @@ services:
     # build時にカレントディレクトリにあるDockerfileのイメージを使用する
     build: .
     ports:
-      # localの番ポートと、コンテナの3000番ポートをつなげる
+      # localの3000番ポートと、コンテナの3000番ポートをつなげる
       - "3000:3000"
     # コンテナ内でのホスト名
     hostname: web-server
@@ -25,5 +25,10 @@ services:
     hostname: db-server
     volumes:
       #コンテナ内の/data/dbの中身を、「db-volume」という名前のvolumeにマウント
-      - ./data:/data/db
+      - db-volume:/data/db
+      - db-config-volume:/data/configdb
+
+volumes:
+    db-volume:
+    db-config-volume:
 
